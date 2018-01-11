@@ -11,7 +11,13 @@
 |
 */
 Route::get('/', 'HomeController@index')->name('home');
-
+//Route::get('/admin', 'HomeController@index')->name('admin');
+Route::resource('/city', 'CityController');
+Route::get('/city/{city}/getThumbnail', 'CityController@getThumbnail');
+Route::post('/city/{city}/uploadThumbnail', 'CityController@uploadThumbnail');
+Route::get('/city/{city}/getSlides', 'CityController@getSlides');
+Route::post('/city/{city}/uploadSlides', 'CityController@uploadSlides');
 Auth::routes();
+
 
 

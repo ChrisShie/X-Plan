@@ -50,6 +50,7 @@
   export default {
     data () {
       return {
+          sidebarState:'all',
         toggleSidebar:false,
         totalPage: 18,
         currentPage: 1,

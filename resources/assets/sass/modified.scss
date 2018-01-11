@@ -29,6 +29,32 @@ a,.btn-link{
         color:darken($hoverCyan,30%);
     }
 }
+.link{
+    font-weight: bold;
+    cursor: pointer;
+    &:hover,&:focus,&:active{
+        text-decoration: underline;
+    }
+    &.orangered{
+        color: $orangered;
+        &:hover,&:focus,&:active{
+            color:darken($orangered,10%);;
+        }
+    }
+}
+.btn{
+    min-width: 100px;
+    &.icon{
+        min-width:fit-content;
+        display: inline-block;
+        &:not(:last-child){
+            margin-right: 3px;
+        }
+    }
+    &.full{
+        width:100%;
+    }
+}
 .btn-border-cyan {
     font-weight: bold;
     border-color: $hoverCyan;
@@ -486,40 +512,57 @@ body{
             background-color: rgba(0, 0, 0, 0.2);
             height:100vh;
             margin-top:0;
-        }
-        .app-info{
-            margin-top:8%;
-            text-align: center;
-            color: white;
-            img{
-                width:300px;
-            }
-            h1{
-                margin-top:0;
-            }
-        }
-        .form{
-            margin:20px;
-            padding: 5px 20px;
-            border-radius:5px;
-            &#login{
-                margin-top:25%;
-            }
-            &#register{
-                margin-top:10%;
-                .radio{
-                    height:34px;
-                }
-            }
-            .header{
+            .app-info{
+                margin-top:8%;
                 text-align: center;
-                margin-bottom: 10px;
+                color: white;
+                img{
+                    width:300px;
+                }
                 h1{
-                    font-weight: bold;
+                    margin-top:0;
+                }
+                &.col-md-12{
+                    img{
+                        width:160px;
+                    }
                 }
             }
-            
+            .one-column{
+                .app-info{
+                    margin-top:4%;
+                    margin-bottom: 1%;
+                }
+                .header{
+                    h1{
+                        margin-bottom: 20px;
+                    }
+                }
+            }
+            .form{
+                margin:20px;
+                padding: 5px 20px;
+                border-radius:5px;
+                &#login{
+                    margin-top:25%;
+                }
+                &#register{
+                    margin-top:10%;
+                    .radio{
+                        height:34px;
+                    }
+                }
+                .header{
+                    text-align: center;
+                    margin-bottom: 10px;
+                    h1{
+                        font-weight: bold;
+                    }
+                }
+                
+            }
         }
+        
     }
 }
 .wrapper {
@@ -533,10 +576,10 @@ body{
         min-width: 220px;
         max-width: 220px;
         min-height: 100%;
-        background: black;
-        color: #fff;
+        background: white;
+        color: black;
         transition: all 0.3s;
-        
+        border-right: 1px solid $hoverCyan;
         a, a:hover, a:focus {
             color: inherit;
             text-decoration: none;
@@ -557,20 +600,20 @@ body{
             content: '\e260';
         }
         ul.components {
-            padding: 20px 0;
-            border-bottom: 1px solid $hoverCyan;
+            padding: 0;
+            
         }
         ul li.active > a, a[aria-expanded="true"] {
-            color: black;
-            background: white;
+            color: white;
+            background: black;
         }
         ul li a:not(.btn) {
             padding: 10px;
             font-size: 1.1em;
             display: block;
             &:hover {
-                color: black;
-                background: #fff;
+                color: white;
+                background: black;
             }
         }
         ul ul a {
@@ -581,6 +624,88 @@ body{
     }
     
 }   
+.admin{
+    .wrapper {
+        .sidebar {
+            ul li > a.active, a[aria-expanded="true"] {
+                color: white;
+                background: $hoverCyan;
+            }
+            ul li a:not(.btn) {
+                padding: 10px;
+                font-size: 1.1em;
+                display: block;
+                &:hover {
+                    color: white;
+                    background: $hoverCyan;
+                }
+            }
+            ul ul a {
+                background: $hoverCyan;
+            }
+            .footer{
+                text-align: center;
+                font-weight: bold;
+            }
+        }
+        .admin-content{
+            margin:5px 0 0;
+            .breadcrumb{
+                background: transparent;
+                padding: 0;
+            }
+            .table{
+                tr{
+                    th{
+                        text-align: center;
+                    }
+                    th,td{
+                        &:first-child{
+                            text-align: center;
+                        }
+                        &:last-child{
+                            width:10%;
+                        }
+                    }
+                }
+            }
+            .add-item,.edit-item{
+                .upload-image{
+                    text-align: center;
+                    .img-wrap{
+                        height: 140px;
+                        width: 160px;
+                        margin: 0 auto;
+                    }
+                    input[type=file]{
+                        display: none;
+                    }
+                    &.upload-slide{
+                        .img-wrap{
+                            width: 420px;
+                        }
+                    }
+                }
+                .footer{
+                    text-align: right;
+                }
+            }
+            .delete-item{
+                h4{
+                    font-weight: bold;
+                    text-align: center;
+                }
+                .footer{
+                    text-align: center;
+                }
+            }
+            .pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus, .pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+                background-color: $hoverCyan;
+                border-color: $hoverCyan;
+            }
+        }
+    }  
+}
 @media (max-width: 768px) {
     .sidebar {
         margin-left: -250px;

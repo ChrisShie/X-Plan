@@ -23,13 +23,13 @@
           totalPage: 18,
         currentPage: 1,
           cities:[
-              {img:'./images/city/jakarta.jpg',name:'Jakarta'},
-             {img:'./images/city/bandung.jpg',name:'Bandung'},
-             {img:'./images/city/langsa.jpg',name:'Langsa'},
-             {img:'./images/city/bali.jpg',name:'Bali'},
-             {img:'./images/city/banda_aceh.jpg',name:'Banda Aceh'},
-             {img:'./images/city/yogyakarta.jpg',name:'Yogyakarta'},
-             {img:'./images/city/lhokseumawe.jpg',name:'Lhokseumawe'}
+              {img:'../images/city/jakarta.jpg',name:'Jakarta'},
+             {img:'../images/city/bandung.jpg',name:'Bandung'},
+             {img:'../images/city/langsa.jpg',name:'Langsa'},
+             {img:'../images/city/bali.jpg',name:'Bali'},
+             {img:'../images/city/banda_aceh.jpg',name:'Banda Aceh'},
+             {img:'../images/city/yogyakarta.jpg',name:'Yogyakarta'},
+             {img:'../images/city/lhokseumawe.jpg',name:'Lhokseumawe'}
             ]
       }
     }

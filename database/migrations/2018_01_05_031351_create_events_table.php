@@ -16,7 +16,7 @@ class CreateEventsTable extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('thumbnail');
+            $table->string('thumbnail')->nullable();
             $table->string('image1')->nullable();
             $table->string('image2')->nullable();
             $table->string('image3')->nullable();
@@ -25,13 +25,14 @@ class CreateEventsTable extends Migration
             $table->integer('destination_id')->unsigned();
             $table->integer('city_id')->unsigned();
             $table->date('start_date');
-            $table->date('end_date');
-            $table->time('open_hour');
-            $table->time('close_hour');
+            $table->date('end_date')->nullable();
+            $table->boolean('all_day');
+            $table->time('open_hour')->nullable();
+            $table->time('close_hour')->nullable();
             $table->bigInteger('estimate_cost');
-            $table->integer('rate_value');
-            $table->integer('rate_by');
-            $table->integer('scheduled_value');
+            $table->integer('rate_value')->nullable();
+            $table->integer('rate_by')->nullable();
+            $table->integer('scheduled_value')->nullable();
             $table->timestamps();
             
             $table->foreign('city_id')

@@ -37,6 +37,7 @@
 
                     <div class="collapse navbar-collapse" id="app-navbar-collapse">
                         <ul class="nav navbar-nav navbar-right">
+                            @if (!(Auth::check()) || Auth::user()->type == 1)
                             <router-link tag="li" to="/" exact >
                                 <a>Home</a>
                             </router-link>
@@ -46,7 +47,11 @@
                             <router-link tag="li" to="/tips">
                                 <a>Tips & Tricks</a>
                             </router-link>
+                            @endif
                             @if (Auth::check())
+                                <!--<router-link tag="li" to="/admin">
+                                    <a>Admin</a>
+                                </router-link>-->
                                 <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                         {{ Auth::user()->name }} <span class="caret"></span>
@@ -54,6 +59,15 @@
 
                                     <ul class="dropdown-menu">
                                         <li>
+                                        <a >
+                                                Profile
+                                            </a>
+                                            <a >
+                                                Schedule
+                                            </a>
+                                            <a >
+                                                Article
+                                            </a>
                                             <a href="{{ route('logout') }}"
                                                 onclick="event.preventDefault();
                                                         document.getElementById('logout-form').submit();">
@@ -74,6 +88,7 @@
         </header>
         
         @yield('content')
+        @if (!(Auth::check()) || Auth::user()->type == 1)
         <footer>
             <div class="container-fluid">
                 <div class="row">
@@ -100,9 +115,16 @@
                 </div>
             </div>
         </footer>
+        @endif
     </div>
 
     <!-- Scripts -->
+    <script>
+        window.Laravel = <?php echo json_encode([
+            'user'=>Auth::user()
+        ])?>
+    </script>
     <script src="{{ mix('js/app.js') }}"></script>
+    
 </body>
 </html>

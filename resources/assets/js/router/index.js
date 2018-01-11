@@ -1,5 +1,8 @@
 import VueRouter from 'vue-router'
 import Home from '../components/Home.vue'
+import Admin from '../components/admin/Admin.vue'
+import AdminCities from '../components/admin/Cities.vue'
+import AdminDestinations from '../components/admin/Destinations.vue'
 import Destination from '../components/Destination.vue'
 import Tips from '../components/Tips.vue'
 import City from '../components/City.vue'
@@ -13,6 +16,21 @@ let routes=[
     {
         path:'/',
         component: Home
+    },
+    {
+        path:'/admin',
+        component: Admin,
+        children: [
+            {
+                path: '', redirect: 'cities'
+            },
+            {
+                path: 'cities',component: AdminCities
+            },
+            {
+                path: 'destinations',component: AdminDestinations
+            }
+        ]
     },
     {
         path:'/destination',
@@ -49,6 +67,6 @@ let routes=[
         component: Tips
     }
 ];
-export default new VueRouter({ linkActiveClass: 'active' ,
+export default new VueRouter({linkActiveClass: 'active' ,
     routes
 });

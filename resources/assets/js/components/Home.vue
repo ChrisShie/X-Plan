@@ -12,7 +12,7 @@
                 </uiv-slide>
             </uiv-carousel>
         </section>
-        <section id="home-login" class="container-fluid text-center">
+        <section id="home-login" class="container-fluid text-center" v-show="!loggedIn">
             <h2><strong><i>Find out</i></strong> amazing destination and <strong><i>Schedule</i></strong> your travelling plan to Indonesia</h2>
             <h4>Login for better trip planning experience here</h4>
             <a class="btn btn-orangered with-arrow" href="login">Login <i class="glyphicon glyphicon-circle-arrow-right"></i></a>
@@ -111,6 +111,7 @@
   export default {
     data () {
       return {
+        loggedIn : window.Laravel.user!==null,
         adv:{
             interval: 5000,
             indicators: false,
@@ -131,6 +132,11 @@
             {id:5,img:'./images/location/raja_ampat.jpg',title:'Raja Ampat', detail:'Located off the northwest tip of the island of New Guinea, Raja Ampat (the Four Kings) is...'}
         ]
       }
+    },
+    created: function () {
+        if(window.Laravel.user!== null && window.Laravel.user.type===0){
+            this.$router.push('/admin')
+        }
     }
   }
   </script>

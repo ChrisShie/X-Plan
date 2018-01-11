@@ -30,6 +30,46 @@ a:active,
   color: #0e6159;
 }
 
+.link {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.link:hover,
+.link:focus,
+.link:active {
+  text-decoration: underline;
+}
+
+.link.orangered {
+  color: #ff5500;
+}
+
+.link.orangered:hover,
+.link.orangered:focus,
+.link.orangered:active {
+  color: #cc4400;
+}
+
+.btn {
+  min-width: 100px;
+}
+
+.btn.icon {
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  display: inline-block;
+}
+
+.btn.icon:not(:last-child) {
+  margin-right: 3px;
+}
+
+.btn.full {
+  width: 100%;
+}
+
 .btn-border-cyan {
   font-weight: bold;
   border-color: #27e1ce;
@@ -563,44 +603,57 @@ body.bg-page .full-page {
   margin-top: 0;
 }
 
-body.bg-page .app-info {
+body.bg-page .full-page .app-info {
   margin-top: 8%;
   text-align: center;
   color: white;
 }
 
-body.bg-page .app-info img {
+body.bg-page .full-page .app-info img {
   width: 300px;
 }
 
-body.bg-page .app-info h1 {
+body.bg-page .full-page .app-info h1 {
   margin-top: 0;
 }
 
-body.bg-page .form {
+body.bg-page .full-page .app-info.col-md-12 img {
+  width: 160px;
+}
+
+body.bg-page .full-page .one-column .app-info {
+  margin-top: 4%;
+  margin-bottom: 1%;
+}
+
+body.bg-page .full-page .one-column .header h1 {
+  margin-bottom: 20px;
+}
+
+body.bg-page .full-page .form {
   margin: 20px;
   padding: 5px 20px;
   border-radius: 5px;
 }
 
-body.bg-page .form#login {
+body.bg-page .full-page .form#login {
   margin-top: 25%;
 }
 
-body.bg-page .form#register {
+body.bg-page .full-page .form#register {
   margin-top: 10%;
 }
 
-body.bg-page .form#register .radio {
+body.bg-page .full-page .form#register .radio {
   height: 34px;
 }
 
-body.bg-page .form .header {
+body.bg-page .full-page .form .header {
   text-align: center;
   margin-bottom: 10px;
 }
 
-body.bg-page .form .header h1 {
+body.bg-page .full-page .form .header h1 {
   font-weight: bold;
 }
 
@@ -622,10 +675,11 @@ body.bg-page .form .header h1 {
   min-width: 220px;
   max-width: 220px;
   min-height: 100%;
-  background: black;
-  color: #fff;
+  background: white;
+  color: black;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  border-right: 1px solid #27e1ce;
 }
 
 .wrapper .sidebar a,
@@ -656,14 +710,13 @@ body.bg-page .form .header h1 {
 }
 
 .wrapper .sidebar ul.components {
-  padding: 20px 0;
-  border-bottom: 1px solid #27e1ce;
+  padding: 0;
 }
 
 .wrapper .sidebar ul li.active > a,
 .wrapper .sidebar a[aria-expanded="true"] {
-  color: black;
-  background: white;
+  color: white;
+  background: black;
 }
 
 .wrapper .sidebar ul li a:not(.btn) {
@@ -673,14 +726,109 @@ body.bg-page .form .header h1 {
 }
 
 .wrapper .sidebar ul li a:not(.btn):hover {
-  color: black;
-  background: #fff;
+  color: white;
+  background: black;
 }
 
 .wrapper .sidebar ul ul a {
   font-size: 0.9em !important;
   padding-left: 30px !important;
   background: black;
+}
+
+.admin .wrapper .sidebar ul li > a.active,
+.admin .wrapper .sidebar a[aria-expanded="true"] {
+  color: white;
+  background: #27e1ce;
+}
+
+.admin .wrapper .sidebar ul li a:not(.btn) {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+
+.admin .wrapper .sidebar ul li a:not(.btn):hover {
+  color: white;
+  background: #27e1ce;
+}
+
+.admin .wrapper .sidebar ul ul a {
+  background: #27e1ce;
+}
+
+.admin .wrapper .sidebar .footer {
+  text-align: center;
+  font-weight: bold;
+}
+
+.admin .wrapper .admin-content {
+  margin: 5px 0 0;
+}
+
+.admin .wrapper .admin-content .breadcrumb {
+  background: transparent;
+  padding: 0;
+}
+
+.admin .wrapper .admin-content .table tr th {
+  text-align: center;
+}
+
+.admin .wrapper .admin-content .table tr th:first-child,
+.admin .wrapper .admin-content .table tr td:first-child {
+  text-align: center;
+}
+
+.admin .wrapper .admin-content .table tr th:last-child,
+.admin .wrapper .admin-content .table tr td:last-child {
+  width: 10%;
+}
+
+.admin .wrapper .admin-content .add-item .upload-image,
+.admin .wrapper .admin-content .edit-item .upload-image {
+  text-align: center;
+}
+
+.admin .wrapper .admin-content .add-item .upload-image .img-wrap,
+.admin .wrapper .admin-content .edit-item .upload-image .img-wrap {
+  height: 140px;
+  width: 160px;
+  margin: 0 auto;
+}
+
+.admin .wrapper .admin-content .add-item .upload-image input[type=file],
+.admin .wrapper .admin-content .edit-item .upload-image input[type=file] {
+  display: none;
+}
+
+.admin .wrapper .admin-content .add-item .upload-image.upload-slide .img-wrap,
+.admin .wrapper .admin-content .edit-item .upload-image.upload-slide .img-wrap {
+  width: 420px;
+}
+
+.admin .wrapper .admin-content .add-item .footer,
+.admin .wrapper .admin-content .edit-item .footer {
+  text-align: right;
+}
+
+.admin .wrapper .admin-content .delete-item h4 {
+  font-weight: bold;
+  text-align: center;
+}
+
+.admin .wrapper .admin-content .delete-item .footer {
+  text-align: center;
+}
+
+.admin .wrapper .admin-content .pagination > .active > a,
+.admin .wrapper .admin-content .pagination > .active > a:hover,
+.admin .wrapper .admin-content .pagination > .active > a:focus,
+.admin .wrapper .admin-content .pagination > .active > span,
+.admin .wrapper .admin-content .pagination > .active > span:hover,
+.admin .wrapper .admin-content .pagination > .active > span:focus {
+  background-color: #27e1ce;
+  border-color: #27e1ce;
 }
 
 @media (max-width: 768px) {
