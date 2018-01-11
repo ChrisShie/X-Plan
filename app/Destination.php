@@ -23,4 +23,8 @@ class Destination extends Model
         'image2',
         'image3'
     ];
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
 }

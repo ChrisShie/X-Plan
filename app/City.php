@@ -14,4 +14,8 @@ class City extends Model
         'image2',
         'image3'
     ];
+    public function destination()
+    {
+        return $this->hasMany(Destination::class);
+    }
 }

@@ -16,7 +16,8 @@ class DestinationController extends Controller
      */
     public function index()
     {
-        $destination = Destination::get();
+        $destination= Destination::with('City')->get();
+        /*$destination = Destination::get();*/
         return response()->json([
             'destinations'    => $destination,
         ], 200);

@@ -63736,7 +63736,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
     mounted: function mounted() {
-        this.getAllCities();
+        this.getAllDest();
     },
 
     methods: {
@@ -63755,46 +63755,47 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.thumbnailFormData = new FormData();
             this.slidesFormData = new FormData();
         },
-        getAllCities: function getAllCities() {
+        getAllDest: function getAllDest() {
             var _this = this;
 
             axios.get('/destination').then(function (response) {
+                console.log(response.data);
                 _this.dests = response.data.destinations;
                 _this.totalPage = Math.ceil(_this.dests.length / 10);
             });
         },
-        openEditCity: function openEditCity(id) {
+        openEditDest: function openEditDest(id) {
             var _this2 = this;
 
             var vm = this;
             this.openEdit = true;
 
-            axios.get('/city/' + id + "/edit").then(function (response) {
-                var tmpCity = response.data.city;
+            axios.get('/destination/' + id + "/edit").then(function (response) {
+                var tmpDest = response.data.destination;
 
-                _this2.city = {
-                    id: tmpCity.id,
-                    name: tmpCity.name,
-                    description: tmpCity.description,
+                _this2.dest = {
+                    id: tmpDest.id,
+                    name: tmpDest.name,
+                    description: tmpDest.description,
                     thumbnail: {
-                        modif: !(tmpCity.thumbnail === null),
-                        url: tmpCity.thumbnail === null ? _this2.city.thumbnail.url : axios.get('/city/' + id + "/getThumbnail").then(function (response) {
-                            _this2.city.thumbnail.url = response.data.path;
+                        modif: !(tmpDest.thumbnail === null),
+                        url: tmpDest.thumbnail === null ? _this2.dest.thumbnail.url : axios.get('/destination/' + id + "/getThumbnail").then(function (response) {
+                            _this2.dest.thumbnail.url = response.data.path;
                         })
                     },
                     slides: []
                 };
-                if (tmpCity.image1 !== null) {
-                    axios.get('/city/' + id + "/getSlides").then(function (response) {
+                if (tmpDest.image1 !== null) {
+                    axios.get('/destination/' + id + "/getSlides").then(function (response) {
                         response.data.slides.forEach(function (value) {
-                            vm.city.slides.push({
+                            vm.dest.slides.push({
                                 modif: true,
                                 url: value
                             });
                         });
                     });
                 } else {
-                    vm.city.slides.push({
+                    vm.dest.slides.push({
                         new: true,
                         modif: false,
                         url: './images/slide_default.png'
@@ -63802,30 +63803,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             });
         },
-        openDeleteCity: function openDeleteCity(id) {
+        openDeleteDest: function openDeleteDest(id) {
             this.openDelete = true;
             this.deleteID = id;
         },
-        addCity: function addCity() {
+        addDest: function addDest() {
             var _this3 = this;
 
             var vm = this;
             this.slideFiles.forEach(function (value, index) {
                 vm.slidesFormData.append("slide" + (index + 1), value);
             });
-            axios.post('/city', {
-                name: this.city.name,
-                description: this.city.description
+            axios.post('/destination', {
+                name: this.dest.name,
+                description: this.dest.description
             }).then(function (response) {
                 if (_this3.thumbnailFormData.has('thumbnail')) {
-                    axios.post('/city/' + response.data.city.id + "/uploadThumbnail", _this3.thumbnailFormData).then(function (response) {
+                    axios.post('/destination/' + response.data.dest.id + "/uploadThumbnail", _this3.thumbnailFormData).then(function (response) {
                         console.log("uploaded");
                     }).catch(function (error) {
                         console.log(error);
                     });
                 }
                 if (_this3.slidesFormData.has('slide1')) {
-                    axios.post('/city/' + response.data.city.id + "/uploadSlides", vm.slidesFormData).then(function (response) {
+                    axios.post('/destination/' + response.data.dest.id + "/uploadSlides", vm.slidesFormData).then(function (response) {
                         console.log("slide uploaded");
                     }).catch(function (error) {
                         console.log(error);
@@ -63833,12 +63834,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
                 _this3.open = false;
                 _this3.reset();
-                _this3.getAllCities();
+                _this3.getAllDest();
             }).catch(function (error) {
                 console.log(error);
             });
         },
-        editCity: function editCity(id) {
+        editDest: function editDest(id) {
             var _this4 = this;
 
             var vm = this;
@@ -63846,19 +63847,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 vm.slidesFormData.append("slide" + (index + 1), value);
             });
             var data = {
-                name: this.city.name,
-                description: this.city.description
+                name: this.dest.name,
+                description: this.dest.description
             };
-            axios.put('/city/' + id, data).then(function (response) {
+            axios.put('/destination/' + id, data).then(function (response) {
                 if (_this4.thumbnailFormData.has('thumbnail')) {
-                    axios.post('/city/' + id + "/uploadThumbnail", _this4.thumbnailFormData).then(function (response) {
+                    axios.post('/dest/' + id + "/uploadThumbnail", _this4.thumbnailFormData).then(function (response) {
                         console.log("uploaded");
                     }).catch(function (error) {
                         console.log(error);
                     });
                 }
                 if (_this4.slidesFormData.has('slide1') || _this4.slidesFormData.has('slide2') || _this4.slidesFormData.has('slide3')) {
-                    axios.post('/city/' + id + "/uploadSlides", vm.slidesFormData).then(function (response) {
+                    axios.post('/destination/' + id + "/uploadSlides", vm.slidesFormData).then(function (response) {
                         console.log("slide uploaded");
                     }).catch(function (error) {
                         console.log(error);
@@ -63866,25 +63867,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
                 _this4.openEdit = false;
                 _this4.reset();
-                _this4.getAllCities();
+                _this4.getAllDest();
             }).catch(function (error) {
                 console.log(error);
             });
         },
-        deleteCity: function deleteCity(id) {
+        deleteDest: function deleteDest(id) {
             var _this5 = this;
 
-            axios.delete('/city/' + id).then(function (response) {
+            axios.delete('/destination/' + id).then(function (response) {
                 _this5.openDelete = false;
                 _this5.deleteID = undefined;
-                _this5.getAllCities();
+                _this5.getAllDest();
             }).catch(function (error) {
                 console.log(error);
             });
         },
         addSlideImage: function addSlideImage() {
-            if (this.city.slides.length < 3) {
-                this.$set(this.city.slides, this.city.slides.length, { url: './images/slide_default.png', modif: false, new: true });
+            if (this.dest.slides.length < 3) {
+                this.$set(this.dest.slides, this.dest.slides.length, { url: './images/slide_default.png', modif: false, new: true });
             } else {
                 alert("Slide Images can't be more than 3");
             }
@@ -63897,15 +63898,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var reader = new FileReader();
             var vm = this;
             reader.onload = function (e) {
-                vm.city.thumbnail.url = e.target.result;
-                vm.city.thumbnail.modif = true;
+                vm.dest.thumbnail.url = e.target.result;
+                vm.dest.thumbnail.modif = true;
             };
             reader.readAsDataURL(file);
             this.thumbnailFormData.append("thumbnail", e.target.files[0]);
         },
         removeImage: function removeImage(e) {
-            this.city.thumbnail.url = './images/thumbnail_default.png';
-            this.city.thumbnail.modif = false;
+            this.dest.thumbnail.url = './images/thumbnail_default.png';
+            this.dest.thumbnail.modif = false;
             this.thumbnailFormData = new FormData();
         },
         onSlideChange: function onSlideChange(index, e) {
@@ -63916,19 +63917,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var reader = new FileReader();
             var vm = this;
             reader.onload = function (e) {
-                vm.city.slides[index].url = e.target.result;
-                vm.city.slides[index].modif = true;
+                vm.dest.slides[index].url = e.target.result;
+                vm.dest.slides[index].modif = true;
             };
             reader.readAsDataURL(file);
             this.slideFiles[index] = e.target.files[0];
         },
         removeSlide: function removeSlide(index, e) {
-            if (this.city.slides.length === 1) {
-                this.city.slides[0].url = './images/slide_default.png';
-                this.city.slides[0].modif = false;
+            if (this.dest.slides.length === 1) {
+                this.dest.slides[0].url = './images/slide_default.png';
+                this.dest.slides[0].modif = false;
                 this.slideFiles = [];
             } else {
-                this.city.slides.splice(index, 1);
+                this.dest.slides.splice(index, 1);
                 this.slideFiles.splice(index, 1);
             }
         }
@@ -63958,7 +63959,7 @@ var render = function() {
               staticClass: "btn btn-border-cyan",
               on: {
                 click: function($event) {
-                  _vm.open = true
+                  _vm.openAdd = true
                 }
               }
             },
@@ -63975,31 +63976,31 @@ var render = function() {
             _c(
               "tbody",
               _vm._l(
-                _vm.cities.slice(
+                _vm.dests.slice(
                   (_vm.currentPage - 1) * 10,
                   10 * _vm.currentPage
                 ),
-                function(city, index) {
+                function(dest, index) {
                   return _c("tr", [
                     _c("td", [
                       _vm._v(_vm._s((_vm.currentPage - 1) * 10 + index + 1))
                     ]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(_vm._f("leadZero")(city.id)))]),
+                    _c("td", [_vm._v(_vm._s(_vm._f("leadZero")(dest.id)))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(city.name))]),
+                    _c("td", [_vm._v(_vm._s(dest.name))]),
                     _vm._v(" "),
                     _c("td", [
-                      _vm._v(_vm._s(_vm._f("truncate")(city.description, 100)))
+                      _vm._v(_vm._s(_vm._f("truncate")(dest.description, 100)))
                     ]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(city.name))]),
+                    _c("td", [_vm._v(_vm._s(dest.name))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(city.name))]),
+                    _c("td", [_vm._v(_vm._s(dest.name))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(city.name))]),
+                    _c("td", [_vm._v(_vm._s(dest.name))]),
                     _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(city.name))]),
+                    _c("td", [_vm._v(_vm._s(dest.name))]),
                     _vm._v(" "),
                     _c("td", [
                       _c(
@@ -64008,7 +64009,7 @@ var render = function() {
                           staticClass: "btn btn-cyan icon",
                           on: {
                             click: function($event) {
-                              _vm.openEditCity(city.id)
+                              _vm.openEditDest(dest.id)
                             }
                           }
                         },
@@ -64025,7 +64026,7 @@ var render = function() {
                           staticClass: "btn btn-orangered icon",
                           on: {
                             click: function($event) {
-                              _vm.openDeleteCity(city.id)
+                              _vm.openDeleteDest(dest.id)
                             }
                           }
                         },
@@ -64069,7 +64070,11 @@ var render = function() {
         "uiv-modal",
         {
           ref: "modal",
-          attrs: { title: "Add New City", id: "modal-add", footer: false },
+          attrs: {
+            title: "Add New Destination",
+            id: "modal-add",
+            footer: false
+          },
           on: { hide: _vm.reset },
           model: {
             value: _vm.openAdd,
@@ -64087,7 +64092,7 @@ var render = function() {
               on: {
                 submit: function($event) {
                   $event.preventDefault()
-                  _vm.addCity($event)
+                  _vm.addDest($event)
                 }
               }
             },
@@ -64096,11 +64101,11 @@ var render = function() {
                 _c("div", {
                   staticClass: "img-wrap",
                   style: {
-                    backgroundImage: "url(" + _vm.city.thumbnail.url + ")"
+                    backgroundImage: "url(" + _vm.dest.thumbnail.url + ")"
                   }
                 }),
                 _vm._v(" "),
-                !_vm.city.thumbnail.modif
+                !_vm.dest.thumbnail.modif
                   ? _c(
                       "label",
                       {
@@ -64130,15 +64135,17 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "name" } }, [_vm._v("City Name")]),
+                _c("label", { attrs: { for: "name" } }, [
+                  _vm._v("Destination Name")
+                ]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.city.name,
-                      expression: "city.name"
+                      value: _vm.dest.name,
+                      expression: "dest.name"
                     }
                   ],
                   staticClass: "form-control",
@@ -64146,15 +64153,15 @@ var render = function() {
                     type: "text",
                     name: "name",
                     id: "name",
-                    placeholder: "Enter City Name Here"
+                    placeholder: "Enter Destination Name Here"
                   },
-                  domProps: { value: _vm.city.name },
+                  domProps: { value: _vm.dest.name },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.city, "name", $event.target.value)
+                      _vm.$set(_vm.dest, "name", $event.target.value)
                     }
                   }
                 })
@@ -64162,7 +64169,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "description" } }, [
-                  _vm._v("City Description")
+                  _vm._v("Destination Description")
                 ]),
                 _vm._v(" "),
                 _c("textarea", {
@@ -64170,8 +64177,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.city.description,
-                      expression: "city.description"
+                      value: _vm.dest.description,
+                      expression: "dest.description"
                     }
                   ],
                   staticClass: "form-control",
@@ -64179,15 +64186,15 @@ var render = function() {
                     name: "description",
                     id: "description",
                     rows: "5",
-                    placeholder: "Enter City Description Here"
+                    placeholder: "Enter Destination Description Here"
                   },
-                  domProps: { value: _vm.city.description },
+                  domProps: { value: _vm.dest.description },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.city, "description", $event.target.value)
+                      _vm.$set(_vm.dest, "description", $event.target.value)
                     }
                   }
                 })
@@ -64201,7 +64208,7 @@ var render = function() {
                     _vm._v("Select Sliding Images")
                   ]),
                   _vm._v(" "),
-                  _vm._l(_vm.city.slides, function(slide, index) {
+                  _vm._l(_vm.dest.slides, function(slide, index) {
                     return _c(
                       "div",
                       { staticClass: "upload-image upload-slide" },
@@ -64300,7 +64307,7 @@ var render = function() {
         "uiv-modal",
         {
           ref: "modal",
-          attrs: { title: "Edit City", id: "modal-edit", footer: false },
+          attrs: { title: "Edit Destination", id: "modal-edit", footer: false },
           on: { hide: _vm.reset },
           model: {
             value: _vm.openEdit,
@@ -64319,7 +64326,7 @@ var render = function() {
               on: {
                 submit: function($event) {
                   $event.preventDefault()
-                  _vm.editCity(_vm.city.id)
+                  _vm.editDest(_vm.dest.id)
                 }
               }
             },
@@ -64328,11 +64335,11 @@ var render = function() {
                 _c("div", {
                   staticClass: "img-wrap",
                   style: {
-                    backgroundImage: "url(" + _vm.city.thumbnail.url + ")"
+                    backgroundImage: "url(" + _vm.dest.thumbnail.url + ")"
                   }
                 }),
                 _vm._v(" "),
-                !_vm.city.thumbnail.modif
+                !_vm.dest.thumbnail.modif
                   ? _c(
                       "label",
                       {
@@ -64362,15 +64369,17 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
-                _c("label", { attrs: { for: "name" } }, [_vm._v("City Name")]),
+                _c("label", { attrs: { for: "name" } }, [
+                  _vm._v("Destination Name")
+                ]),
                 _vm._v(" "),
                 _c("input", {
                   directives: [
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.city.name,
-                      expression: "city.name"
+                      value: _vm.dest.name,
+                      expression: "dest.name"
                     }
                   ],
                   staticClass: "form-control",
@@ -64378,15 +64387,15 @@ var render = function() {
                     type: "text",
                     name: "name",
                     id: "name",
-                    placeholder: "Enter City Name Here"
+                    placeholder: "Enter Destination Name Here"
                   },
-                  domProps: { value: _vm.city.name },
+                  domProps: { value: _vm.dest.name },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.city, "name", $event.target.value)
+                      _vm.$set(_vm.dest, "name", $event.target.value)
                     }
                   }
                 })
@@ -64394,7 +64403,7 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "form-group" }, [
                 _c("label", { attrs: { for: "description" } }, [
-                  _vm._v("City Description")
+                  _vm._v("Destination Description")
                 ]),
                 _vm._v(" "),
                 _c("textarea", {
@@ -64402,8 +64411,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.city.description,
-                      expression: "city.description"
+                      value: _vm.dest.description,
+                      expression: "dest.description"
                     }
                   ],
                   staticClass: "form-control",
@@ -64411,15 +64420,15 @@ var render = function() {
                     name: "description",
                     id: "description",
                     rows: "5",
-                    placeholder: "Enter City Description Here"
+                    placeholder: "Enter Destination Description Here"
                   },
-                  domProps: { value: _vm.city.description },
+                  domProps: { value: _vm.dest.description },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.city, "description", $event.target.value)
+                      _vm.$set(_vm.dest, "description", $event.target.value)
                     }
                   }
                 })
@@ -64433,7 +64442,7 @@ var render = function() {
                     _vm._v("Select Sliding Images")
                   ]),
                   _vm._v(" "),
-                  _vm._l(_vm.city.slides, function(slide, index) {
+                  _vm._l(_vm.dest.slides, function(slide, index) {
                     return _c(
                       "div",
                       { staticClass: "upload-image upload-slide" },
@@ -64536,7 +64545,7 @@ var render = function() {
         {
           ref: "modal",
           attrs: {
-            title: "Delete City Confirmation",
+            title: "Delete Destination Confirmation",
             id: "modal-delete",
             footer: false
           },
@@ -64556,7 +64565,7 @@ var render = function() {
               on: {
                 submit: function($event) {
                   $event.preventDefault()
-                  _vm.deleteCity(_vm.deleteID)
+                  _vm.deleteDest(_vm.deleteID)
                 }
               }
             },
