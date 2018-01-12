@@ -30,7 +30,7 @@
                 <div class="col-md-8">
                     <h2>Novi Adelia</h2>
                     <p>Colleger in STMIK Mikroskil, taking major of IS.</p>
-                    <p>Enter the college at 2016 with NIM 15.111.0396.</p>
+                    <p>Enter the college at 2016 with NIM 16.211.0396.</p>
                 </div>
             </article>
         </section>
