@@ -563,6 +563,34 @@ body main #home-about article img {
   height: 140px;
 }
 
+body main #about-us {
+  background-color: #eeeeee;
+}
+
+body main #about-us h1 {
+  font-weight: bold;
+  font-size: 2em;
+}
+
+body main #about-us > p {
+  text-align: center;
+}
+
+body main #about-us article.box {
+  margin: 10px auto;
+  padding: 20px;
+  width: 600px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 5px darkgrey;
+          box-shadow: 0px 0px 5px darkgrey;
+}
+
+body main #about-us article.box img {
+  width: 100%;
+}
+
 body footer {
   padding: 30px;
   background-color: black;

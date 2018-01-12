@@ -481,6 +481,30 @@ body{
                 }
             }
         }
+        #about-us{
+            background-color: $lightGrey;
+            h1{
+                font-weight: bold;
+                font-size: 2em;
+            }
+            >p{
+                text-align: center;
+            }
+            article{
+                &.box{
+                    margin:10px auto;
+                    padding:20px;
+                    width: 600px;
+                    border: 1px solid black;
+                    border-radius: 5px;
+                    background-color: white;
+                    box-shadow: 0px 0px 5px darkgrey;
+                    img{
+                        width:100%;
+                    }
+                }
+            }
+        }
     }
     footer{
         padding:30px;

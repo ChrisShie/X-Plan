@@ -109,7 +109,7 @@
                         <a href=""><img src="./images/youtube.png" alt=""></a>
                     </div>
                     <div id="footer-btn" class="col-md-1">
-                        <a href="" class="btn btn-default">About us</a>
+                        <router-link to="/about" class="btn btn-default">About us</router-link>
                         <a href="" class="btn btn-default">FAQ</a>
                     </div>
                 </div>

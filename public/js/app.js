@@ -61669,18 +61669,21 @@ exports.clearImmediate = clearImmediate;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Destination_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_Destination_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Tips_vue__ = __webpack_require__(175);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Tips_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_Tips_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_City_vue__ = __webpack_require__(177);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_City_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_City_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_Favorite_vue__ = __webpack_require__(180);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_Favorite_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_Favorite_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_Rating_vue__ = __webpack_require__(183);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_Rating_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_Rating_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_Event_vue__ = __webpack_require__(186);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_Event_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_Event_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_LocationDetail_vue__ = __webpack_require__(189);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_LocationDetail_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_LocationDetail_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_EventDetail_vue__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_EventDetail_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__components_EventDetail_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_AboutUs_vue__ = __webpack_require__(213);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_AboutUs_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_AboutUs_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_City_vue__ = __webpack_require__(177);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_City_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_City_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_Favorite_vue__ = __webpack_require__(180);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_Favorite_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_Favorite_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_Rating_vue__ = __webpack_require__(183);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_Rating_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_Rating_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Event_vue__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_Event_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_Event_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_LocationDetail_vue__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_LocationDetail_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__components_LocationDetail_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_EventDetail_vue__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_EventDetail_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__components_EventDetail_vue__);
+
 
 
 
@@ -61714,24 +61717,27 @@ var routes = [{
     children: [{
         path: '', redirect: 'city'
     }, {
-        path: 'city', component: __WEBPACK_IMPORTED_MODULE_7__components_City_vue___default.a
+        path: 'city', component: __WEBPACK_IMPORTED_MODULE_8__components_City_vue___default.a
     }, {
-        path: 'favorite', component: __WEBPACK_IMPORTED_MODULE_8__components_Favorite_vue___default.a
+        path: 'favorite', component: __WEBPACK_IMPORTED_MODULE_9__components_Favorite_vue___default.a
     }, {
-        path: 'rating', component: __WEBPACK_IMPORTED_MODULE_9__components_Rating_vue___default.a
+        path: 'rating', component: __WEBPACK_IMPORTED_MODULE_10__components_Rating_vue___default.a
     }, {
         path: 'event',
-        component: __WEBPACK_IMPORTED_MODULE_10__components_Event_vue___default.a
+        component: __WEBPACK_IMPORTED_MODULE_11__components_Event_vue___default.a
     }]
 }, {
     path: '/location/:location_id',
-    component: __WEBPACK_IMPORTED_MODULE_11__components_LocationDetail_vue___default.a
+    component: __WEBPACK_IMPORTED_MODULE_12__components_LocationDetail_vue___default.a
 }, {
     path: '/event/:event_id',
-    component: __WEBPACK_IMPORTED_MODULE_12__components_EventDetail_vue___default.a
+    component: __WEBPACK_IMPORTED_MODULE_13__components_EventDetail_vue___default.a
 }, {
     path: '/tips',
     component: __WEBPACK_IMPORTED_MODULE_6__components_Tips_vue___default.a
+}, {
+    path: '/about',
+    component: __WEBPACK_IMPORTED_MODULE_7__components_AboutUs_vue___default.a
 }];
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_0_vue_router__["a" /* default */]({ linkActiveClass: 'active',
     routes: routes
@@ -70863,6 +70869,166 @@ module.exports = {"version":"2017c","zones":["Africa/Abidjan|LMT GMT|g.8 0|01|-2
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */,
+/* 210 */,
+/* 211 */,
+/* 212 */,
+/* 213 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = null
+/* template */
+var __vue_template__ = __webpack_require__(214)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\AboutUs.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5a8dc864", Component.options)
+  } else {
+    hotAPI.reload("data-v-5a8dc864", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 214 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("main", [
+    _c(
+      "section",
+      { staticClass: "container-fluid", attrs: { id: "about-us" } },
+      [
+        _c("h1", { staticClass: "text-center" }, [_vm._v("About Us")]),
+        _vm._v(" "),
+        _c("p", [_vm._v("We are Monalisa Development Team with 3 member")]),
+        _vm._v(" "),
+        _c("article", { staticClass: "box row" }, [
+          _c("div", { staticClass: "col-md-4" }, [
+            _c("img", {
+              staticClass: "img-rounded",
+              attrs: { src: "./images/avatar_default.png" }
+            })
+          ]),
+          _vm._v(" "),
+          _vm._m(0, false, false)
+        ]),
+        _vm._v(" "),
+        _c("article", { staticClass: "box row" }, [
+          _vm._m(1, false, false),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-4" }, [
+            _c("img", {
+              staticClass: "img-rounded",
+              attrs: { src: "./images/avatar_default.png" }
+            })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("article", { staticClass: "box row" }, [
+          _c("div", { staticClass: "col-md-4" }, [
+            _c("img", {
+              staticClass: "img-rounded",
+              attrs: { src: "./images/avatar_default.png" }
+            })
+          ]),
+          _vm._v(" "),
+          _vm._m(2, false, false)
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-8" }, [
+      _c("h2", [_vm._v("Chris Shinta")]),
+      _vm._v(" "),
+      _c("p", [_vm._v("Colleger in STMIK Mikroskil, taking major of IT.")]),
+      _vm._v(" "),
+      _c("p", [_vm._v("Enter the college at 2015 with NIM 15.111.1640.")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-8" }, [
+      _c("h2", [_vm._v("Yuni Adelia")]),
+      _vm._v(" "),
+      _c("p", [_vm._v("Colleger in STMIK Mikroskil, taking major of IT.")]),
+      _vm._v(" "),
+      _c("p", [_vm._v("Enter the college at 2015 with NIM 15.111.0679.")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-md-8" }, [
+      _c("h2", [_vm._v("Novi Adelia")]),
+      _vm._v(" "),
+      _c("p", [_vm._v("Colleger in STMIK Mikroskil, taking major of IS.")]),
+      _vm._v(" "),
+      _c("p", [_vm._v("Enter the college at 2016 with NIM 15.111.0396.")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5a8dc864", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

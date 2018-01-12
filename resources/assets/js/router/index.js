@@ -5,6 +5,7 @@ import AdminCities from '../components/admin/Cities.vue'
 import AdminDestinations from '../components/admin/Destinations.vue'
 import Destination from '../components/Destination.vue'
 import Tips from '../components/Tips.vue'
+import AboutUs from '../components/AboutUs.vue'
 import City from '../components/City.vue'
 import Favorite from '../components/Favorite.vue'
 import Rating from '../components/Rating.vue'
@@ -65,6 +66,10 @@ let routes=[
     {
         path:'/tips',
         component: Tips
+    },
+    {
+        path:'/about',
+        component: AboutUs
     }
 ];
 export default new VueRouter({linkActiveClass: 'active' ,
